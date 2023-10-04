@@ -75,8 +75,6 @@ function ClueList(props) {
   return (
     <>
       <div style={styles2.container}>
-        <h3>{'Answers can be seen by right-clicking the clue'}</h3>
-        <br />
         <center><h1>Clues</h1></center>
 
         <div style={styles2.column}>
