@@ -12,8 +12,8 @@
   text-align: center;
   width: 28px;
   text-transform: capitalize;
-  
 }
+
 
 .number {
   position: absolute;
@@ -60,4 +60,21 @@
   right: 15px;
   top: 15px;
   padding: 10px;
+}
+
+.readOnly {
+  background-color: black;
+  border-color: black;
+}
+
+.correct {
+  color: black;
+}
+
+.incorrect {
+  color: red;
+}
+
+.correctWord {
+  background-color: green;
 }
