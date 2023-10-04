@@ -705,6 +705,7 @@ function Board() {
                     ) + 1;
                 }
                 return (
+                  
                   <Square
                     row={rowItems.ROW}
                     col={rowItems.COL}
@@ -724,11 +725,14 @@ function Board() {
         })}
         {(START_SQUARES = [])}
       </div>
-      <ClueList
-        verticalClues={vertClues}
-        horizontalClues={horClues}
-        result={clues}
-      />
+      <br></br>
+      <div>
+        <ClueList
+          verticalClues={vertClues}
+          horizontalClues={horClues}
+          result={clues}
+        />
+      </div>
       <Modal open={puzzleIsCorrect} onClose={() => setPuzzleIsCorrect(false)}>
         <div className={styles.modal_container}>
           <button
