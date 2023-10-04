@@ -39,21 +39,22 @@ function ClueList(props) {
       <div>
         <h1>Clues</h1>
         <h2>Down</h2>
-        {clueList.VERTICAL.map((clues) => {
-          return (
+        <div style={{ height: '400px', overflow: 'auto' }}>
+          {clueList.VERTICAL.map((clues) => (
             <div key={clues.CLUE_NUMBER}>
-              <Clue number={clues.CLUE_NUMBER} word={clues.WORD} clue={clues.CLUE} />
+            <Clue number={clues.CLUE_NUMBER} word={clues.WORD} clue={clues.CLUE} />
             </div>
-          );
-        })}
+          ))}
+        </div>
+
         <h2>Across</h2>
-        {clueList.HORIZONTAL.map((clues) => {
-          return (
+        <div style={{ height: '400px', overflow: 'auto' }}>
+          {clueList.HORIZONTAL.map((clues) => (
             <div key={clues.CLUE_NUMBER}>
-              <Clue number={clues.CLUE_NUMBER} word={clues.WORD} clue={clues.CLUE} />
+            <Clue number={clues.CLUE_NUMBER} word={clues.WORD} clue={clues.CLUE} />
             </div>
-          );
-        })}
+          ))}
+        </div>
         <h3>Answers can be seen by right-clicking the clue</h3>
       </div>
     </>
