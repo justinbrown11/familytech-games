@@ -3,6 +3,52 @@ import { Modal } from "@mui/material";
 import Person from "@/components/person";
 import { useUser } from "@/contexts/UserContext";
 
+const styles3 = {
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginTop: "1vh"
+  },
+  highlightButton: {
+    padding: '5px',
+    textAlign: 'center',
+    borderRadius: '10px', // Rounded corners
+    marginBottom: '5px', // Add some margin between entries
+    maxWidth: 'calc(100% -12px)',
+    backgroundColor: '#ffff80',
+    cursor: "pointer"
+  },
+  viewPersonButton: {
+    padding: '5px',
+    textAlign: 'left',
+    borderRadius: '10px', // Rounded corners
+    marginBottom: '5px', // Add some margin between entries
+    maxWidth: 'calc(100% -12px)',
+    backgroundColor: '#9ae59a',
+    cursor: "pointer"
+  },
+  showAnswerButton: {
+    padding: '5px',
+    textAlign: 'left',
+    borderRadius: '10px', // Rounded corners
+    marginBottom: '5px', // Add some margin between entries
+    maxWidth: 'calc(100% -12px)',
+    backgroundColor: '#66a3ff',
+    cursor: "pointer"
+  },
+  hideAnswerButton: {
+    padding: '5px',
+    textAlign: 'left',
+    borderRadius: '10px', // Rounded corners
+    marginBottom: '5px', // Add some margin between entries
+    maxWidth: 'calc(100% -12px)',
+    backgroundColor: '#66a3ff',
+    cursor: "pointer"
+  }
+};
+
 function Clue(props) {
   const { number, word, clue } = props;
   const [displayClue, setDisplayClue] = useState(true);
@@ -11,8 +57,7 @@ function Clue(props) {
   const { userFSData } = useUser();
 
   // Switches between clue and answer
-  function handleContextMenu(event) {
-    event.preventDefault();
+  function handleAnswerClick() {
     setDisplayClue(!displayClue);
   }
 
@@ -35,11 +80,30 @@ function Clue(props) {
 
   return (
     <>
-      <div 
-        onContextMenu={handleContextMenu}
-        onClick={displayClue ? null : handleNameClick}
-      >
+      <div>
         {number + ". " + (displayClue ? clue : word)}
+      </div>
+      <div style={styles3.buttonContainer}>
+        {displayClue ?
+        <div 
+        style={styles3.showAnswerButton}
+        onClick={handleAnswerClick}>
+          Reveal answer
+        </div>
+        :
+        <>
+          <div 
+          style={styles3.hideAnswerButton}
+          onClick={handleAnswerClick}>
+            Hide answer
+          </div>
+          <div 
+          style={styles3.viewPersonButton}
+          onClick={displayClue ? null : handleNameClick}>
+            View Person
+          </div>
+        </>
+        }
       </div>
       <Modal open={showPersonInfo} onClose={() => setShowPersonInfo(false)}>
         <Person personData={currentPerson}/>
