@@ -57,9 +57,7 @@ function Clue(props) {
   const { userFSData } = useUser();
 
   // Switches between clue and answer
-  function handleContextMenu(event) {
-    console.log(event);
-    event.preventDefault();
+  function handleAnswerClick() {
     setDisplayClue(!displayClue);
   }
 
@@ -86,20 +84,17 @@ function Clue(props) {
         {number + ". " + (displayClue ? clue : word)}
       </div>
       <div style={styles3.buttonContainer}>
-        <div style={styles3.highlightButton}>
-          Highlight
-        </div>
         {displayClue ?
         <div 
         style={styles3.showAnswerButton}
-        onContextMenu={handleContextMenu}>
+        onClick={handleAnswerClick}>
           Reveal answer
         </div>
         :
         <>
           <div 
           style={styles3.hideAnswerButton}
-          onContextMenu={handleContextMenu}>
+          onClick={handleAnswerClick}>
             Hide answer
           </div>
           <div 
