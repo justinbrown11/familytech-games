@@ -1,4 +1,6 @@
 import styles from "@/styles/crossword.module.css";
+import React, { useState } from 'react';
+import styles2 from "@/styles/tooltip.module.css";
 
 function Square(props) {
   let {
@@ -13,6 +15,16 @@ function Square(props) {
     inputLocation,
   } = props;
 
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
+
   function handleChange(event) {
     handleSquareInput(event.target.value, row, col, inputLocation);
   }
@@ -23,7 +35,11 @@ function Square(props) {
 
   return (
     <>
-      <div className={styles.div}>
+      <div 
+      className={styles.div}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      >
         {clueNumber != 0 ? <p className={styles.number}>{clueNumber}</p> : null}
         <input
           ref={(element) =>
@@ -51,6 +67,10 @@ function Square(props) {
             key_character === "*" || key_character === "&"
           }
         ></input>
+        {showTooltip && key_character != "*" && key_character != "&" ? 
+        <div className={styles2.elementwithtooltip}>test</div>
+        : <></>
+        }
       </div>
     </>
   );
