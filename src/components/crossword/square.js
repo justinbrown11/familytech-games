@@ -68,7 +68,7 @@ function Square(props) {
           }
         ></input>
         {showTooltip && key_character != "*" && key_character != "&" ? 
-        <div className={styles2.elementwithtooltip}>test</div>
+        <div className={styles2.elementwithtooltip}>This will be the current clue</div>
         : <></>
         }
       </div>

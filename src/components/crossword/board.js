@@ -691,7 +691,7 @@ function Board() {
   let clueNumber = -1;
   return !loading ?(
     <>
-      <div>
+      <div className={styles.main}>
         {board.map((rows) => {
           return (
             <div className={styles.div} key={rows.id}>
