@@ -1,23 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "../styles/tooltip.module.css";
 import styles from "@/styles/tooltip.module.css";
 
-const Tooltip = ({ text }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+const Tooltip = (props) => {
+  let timeout;
+  const [active, setActive] = useState(false);
 
-  const handleMouseEnter = () => {
-    setShowTooltip(true);
+  const showTip = () => {
+    timeout = setTimeout(() => {
+      setActive(true);
+    }, props.delay || 400);
   };
 
-  const handleMouseLeave = () => {
-    setShowTooltip(false);
+  const hideTip = () => {
+    clearInterval(timeout);
+    setActive(false);
   };
 
   return (
     <div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="element-with-tooltip"
-    >{showTooltip && <div className="tooltip">{text}</div>}
+      className="Tooltip-Wrapper"
+      // When to show the tooltip
+      onMouseEnter={showTip}
+      onMouseLeave={hideTip}
+    >
+      {/* Wrapping */}
+      {props.children}
+      {active && (
+        <div className={`Tooltip-Tip ${props.direction || "top"}`}>
+          {/* Content */}
+          {props.content}
+        </div>
+      )}
     </div>
   );
 };

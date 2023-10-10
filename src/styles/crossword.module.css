@@ -5,21 +5,22 @@
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 28px;
+  height: 3.5vh;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 28px;
+  width: 2vw;
   text-transform: capitalize;
 }
 
 
 .number {
   position: absolute;
-  bottom: 4px; 
-  left: 2px;
-  font-size: .7em;
+  bottom: .1rem; 
+  left: .1rem;
+  font-size: .4rem;
+  font-weight: bold;
 }
 
 .div
