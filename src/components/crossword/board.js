@@ -691,7 +691,7 @@ function Board() {
   let clueNumber = -1;
   return !loading ?(
     <>
-      <div>
+      <div className={styles.main}>
         {board.map((rows) => {
           return (
             <div className={styles.div} key={rows.id}>
@@ -706,18 +706,18 @@ function Board() {
                 }
                 return (
                   
-                  <Square
-                    row={rowItems.ROW}
-                    col={rowItems.COL}
-                    character={rowItems.CHARACTER}
-                    key_character={rowItems.KEY_CHARACTER}
-                    key={rowItems.id}
-                    clueNumber={clueNumber}
-                    handleSquareInput={handleSquareInput}
-                    handleKeyDown={handleKeyDown}
-                    dimensions={DIMENSIONS}
-                    inputLocation={inputLocation}
-                  />
+                    <Square
+                      row={rowItems.ROW}
+                      col={rowItems.COL}
+                      character={rowItems.CHARACTER}
+                      key_character={rowItems.KEY_CHARACTER}
+                      key={rowItems.id}
+                      clueNumber={clueNumber}
+                      handleSquareInput={handleSquareInput}
+                      handleKeyDown={handleKeyDown}
+                      dimensions={DIMENSIONS}
+                      inputLocation={inputLocation}
+                    />
                 );
               })}
             </div>
